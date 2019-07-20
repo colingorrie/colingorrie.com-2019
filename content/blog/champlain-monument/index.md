@@ -1,6 +1,7 @@
 ---
 title: Hello World
 date: "2019-07-20T22:12:03.284Z"
+description: ""
 ---
 
 ![The Champlain Monument][monument]
