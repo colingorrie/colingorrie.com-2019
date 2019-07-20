@@ -1,5 +1,5 @@
 ---
-title: Hello World
+title: Champlain Monument
 date: "2019-07-20T22:12:03.284Z"
 description: ""
 ---
