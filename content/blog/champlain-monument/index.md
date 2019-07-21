@@ -1,5 +1,5 @@
 ---
-title: Champlain Monument
+title: Champlain and the Canadian Iconoclasm
 date: "2019-07-20T22:12:03.284Z"
 description: ""
 ---
