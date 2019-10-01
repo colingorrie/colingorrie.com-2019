@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Colin Gorrie`,
     author: `Colin Gorrie`,
-    description: `Independent linguist, developer, and writer.`,
+    description: `Linguist, developer, and podcaster`,
     siteUrl: `https://colingorrie.com/`,
     social: {
       twitter: `colingorrie`,
@@ -12,7 +12,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
+        path: `${__dirname}/content/projects`,
         name: `blog`,
       },
     },
@@ -58,8 +58,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Colin Gorrie`,
+        short_name: `Colin Gorrie`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
@@ -76,4 +76,4 @@ module.exports = {
       },
     },
   ],
-}
+};

@@ -5,18 +5,18 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import Image from 'gatsby-image';
 
-import { rhythm } from "../utils/typography"
+import { rhythm } from '../utils/typography';
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
-          fixed(width: 100, height: 100) {
+          fixed(width: 100, height: 100, quality: 100) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -30,9 +30,9 @@ const Bio = () => {
         }
       }
     }
-  `)
+  `);
 
-  const { author, social } = data.site.siteMetadata
+  const { author, social } = data.site.siteMetadata;
   return (
     <div
       style={{
@@ -54,14 +54,13 @@ const Bio = () => {
         }}
       />
       <p>
-        <strong>{author}</strong> is an independent linguist, developer, and writer. He lives in Hamilton, Ontario. Follow him on Twitter
+        <strong>{author}</strong> is a linguist, developer, and podcaster. He
+        lives in Hamilton, Ontario. Follow him on Twitter
         {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>
-          @{social.twitter}
-        </a>
+        <a href={`https://twitter.com/${social.twitter}`}>@{social.twitter}</a>.
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default Bio
+export default Bio;
