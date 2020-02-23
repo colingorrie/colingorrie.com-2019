@@ -1,8 +1,9 @@
 ---
 title: Flying Fish Digital
-description: Pumpkinseed.io is a consultancy that specialises in making websites and applications optimized for speed.
+description: Pumpkinseed.io is a consultancy that specialises in making web applications optimized for speed.
 url: https://flyingfishdigital.com
 category: business
+visible: false
 ---
 
-Pumpkinseed.io is a consultancy that specialises in making websites and applications optimized for speed.
+Pumpkinseed.io is a consultancy that specialises in making web applications optimized for speed.

@@ -16,7 +16,7 @@ const Bio = () => {
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
-          fixed(width: 100, height: 100, quality: 100) {
+          fixed(width: 200, height: 200, quality: 100) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -44,9 +44,9 @@ const Bio = () => {
         fixed={data.avatar.childImageSharp.fixed}
         alt={author}
         style={{
-          marginRight: rhythm(1 / 2),
+          marginRight: rhythm(1),
           marginBottom: 0,
-          minWidth: 100,
+          minWidth: 200,
           borderRadius: `100%`,
         }}
         imgStyle={{
@@ -54,8 +54,8 @@ const Bio = () => {
         }}
       />
       <p>
-        <strong>{author}</strong> is a linguist, developer, and podcaster. He
-        lives in Hamilton, Ontario. Follow him on Twitter
+        <strong>{author}</strong> is a linguist and developer. He lives in
+        Hamilton, Ontario. Follow him on Twitter
         {` `}
         <a href={`https://twitter.com/${social.twitter}`}>@{social.twitter}</a>.
       </p>

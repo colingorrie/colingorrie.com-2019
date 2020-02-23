@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import flow from 'lodash/fp/flow';
-import groupBy from 'lodash/fp/groupBy';
 import map from 'lodash/fp/map';
 
 import Bio from '../components/bio';
@@ -13,18 +11,16 @@ class BlogIndex extends React.Component {
   render() {
     const { data } = this.props;
     const siteTitle = data.site.siteMetadata.title;
-    const posts = data.allMarkdownRemark.edges;
+    const categories = data.allMarkdownRemark.group;
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Colin Gorrie" />
         <Bio />
-        <h2>Projects</h2>
-        {flow([
-          groupBy(({ node }) => node.frontmatter.category),
-          map((nodes, category) => {
-            return map(({ node }) => {
-              console.log(node);
+        {map(({ fieldValue, edges }) => (
+          <div>
+            <h2 style={{ textTransform: 'capitalize' }}>{fieldValue}</h2>
+            {map(({ node }) => {
               const title = node.frontmatter.title || node.fields.slug;
               return (
                 <div key={node.fields.slug}>
@@ -49,9 +45,9 @@ class BlogIndex extends React.Component {
                   />
                 </div>
               );
-            })(nodes);
-          }),
-        ])(posts)}
+            })(edges)}
+          </div>
+        ))(categories)}
       </Layout>
     );
   }
@@ -66,20 +62,46 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___title], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            description
-            url
+    allMarkdownRemark(filter: { frontmatter: { visible: { eq: true } } }) {
+      group(field: frontmatter___category) {
+        fieldValue
+        edges {
+          node {
+            id
+            excerpt
+            fields {
+              slug
+            }
+            frontmatter {
+              category
+              description
+              title
+              url
+            }
           }
         }
       }
     }
   }
+
+  #    allMarkdownRemark(
+  #      sort: { fields: [frontmatter___title], order: DESC }
+  #      filter: { frontmatter: { visible: { eq: true } } }
+  #    ) {
+  #      edges {
+  #        node {
+  #          excerpt
+  #          fields {
+  #            slug
+  #          }
+  #          frontmatter {
+  #            category
+  #            description
+  #            title
+  #            url
+  #          }
+  #        }
+  #      }
+  #    }
+  #  }
 `;
