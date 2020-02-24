@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Colin Gorrie`,
     author: `Colin Gorrie`,
-    description: `Linguist, developer, and podcaster`,
+    description: `Colin Gorrie, linguist and developer`,
     siteUrl: `https://colingorrie.com/`,
     social: {
       twitter: `colingorrie`,
@@ -51,10 +51,9 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: 'UA-21650974-4',
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
-    `gatsby-plugin-feed`,
+    // `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
