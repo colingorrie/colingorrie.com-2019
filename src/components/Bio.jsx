@@ -44,7 +44,7 @@ const Bio = () => {
           borderRadius: `50%`,
         }}
       />
-      <p>
+      <p className="content">
         <strong>{author}</strong> is a linguist and developer. He lives in
         Hamilton, Ontario. Follow him on Twitter
         {` `}

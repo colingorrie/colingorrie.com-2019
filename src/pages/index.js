@@ -16,12 +16,12 @@ const BlogIndex = ({ data, location }) => {
       <Bio />
       {map(({ fieldValue, edges }) => (
         <div className="mb-6" key={fieldValue}>
-          <h2 className="capitalize mb-4 text-xl">{fieldValue}</h2>
+          <h2 className="capitalize subsection-heading mb-4">{fieldValue}</h2>
           {map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug;
             return (
               <div key={node.fields.slug} className="mb-6">
-                <h3 className="mb-2 text-2xl">
+                <h3 className="section-heading">
                   <a
                     href={node.frontmatter.url}
                     target="_blank"
@@ -32,7 +32,7 @@ const BlogIndex = ({ data, location }) => {
                 </h3>
                 <small>{node.frontmatter.date}</small>
                 <p
-                  className="mb-4"
+                  className="content mb-4"
                   dangerouslySetInnerHTML={{
                     __html: node.frontmatter.description || node.excerpt,
                   }}

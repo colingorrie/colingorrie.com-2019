@@ -16,8 +16,11 @@ const ProjectPageTemplate = props => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <h1 className="mt-4 mb-4 font-bold text-4xl">{post.frontmatter.title}</h1>
-      <div className="mb-8" dangerouslySetInnerHTML={{ __html: post.html }} />
+      <h1 className="page-title">{post.frontmatter.title}</h1>
+      <div
+        className="mb-8 content"
+        dangerouslySetInnerHTML={{ __html: post.html }}
+      />
       <hr className="mb-4" />
       <Bio />
 

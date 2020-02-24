@@ -9,7 +9,7 @@ const Layout = ({ location, title, children }) => {
 
   if (location.pathname === rootPath) {
     header = (
-      <h1 className="mt-0 mb-8 font-bold text-5xl">
+      <h1 className="page-title">
         <Link className="shadow-none no-underline" to={`/`}>
           {title}
         </Link>
@@ -25,10 +25,12 @@ const Layout = ({ location, title, children }) => {
     );
   }
   return (
-    <div className="mx-auto max-w-xl px-6 py-3">
+    <div className="mx-auto max-w-xl px-6 py-3 flex flex-col min-h-screen">
       <header>{header}</header>
-      <main>{children}</main>
-      <footer>© {new Date().getFullYear()} Colin Gorrie.</footer>
+      <main className="flex-grow">{children}</main>
+      <footer className="self-center">
+        © {new Date().getFullYear()} Colin Gorrie.
+      </footer>
     </div>
   );
 };

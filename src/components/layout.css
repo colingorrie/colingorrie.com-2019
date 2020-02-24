@@ -2,4 +2,78 @@
 
 @tailwind components;
 
+.page-title {
+  @apply mt-0 mb-8 font-bold text-5xl;
+}
+
+.section-heading {
+  @apply mt-0 mb-2 font-bold text-2xl;
+}
+
+.subsection-heading {
+  @apply mt-0 mb-2 text-xl;
+}
+
 @tailwind utilities;
+
+.content h1 {
+  @apply page-title;
+}
+
+.content h2 {
+  @apply section-heading;
+}
+
+.content h3 {
+  @apply subsection-heading;
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  @apply leading-tight;
+}
+
+.content p {
+  @apply mb-2;
+}
+
+.content ol {
+  @apply mb-2 list-decimal pl-4;
+}
+
+.content ul {
+  @apply mb-2 list-disc pl-4;
+}
+
+/* purgecss ignore */
+.content blockquote {
+  @apply m-0;
+}
+
+/* purgecss ignore */
+.content blockquote p {
+  @apply italic text-3xl leading-tight;
+}
+
+/* purgecss ignore */
+.content blockquote p strong {
+  @apply font-normal;
+}
+
+.content a {
+  @apply cursor-pointer text-blue-700 no-underline;
+}
+
+/* purgecss ignore */
+#__gatsby {
+  height: 100%;
+}
+
+/* purgecss ignore */
+div[role='group'][tabindex] {
+  height: 100%;
+}
