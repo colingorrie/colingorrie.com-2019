@@ -17,12 +17,7 @@ const Layout = ({ location, title, children }) => {
     );
   } else {
     header = (
-      <h3
-        className="mt-0"
-        style={{
-          fontFamily: `Montserrat, sans-serif`,
-        }}
-      >
+      <h3 className="mt-0 mb-4 font-bold text-3xl">
         <Link className="shadow-none no-underline" to={`/`}>
           {title}
         </Link>
