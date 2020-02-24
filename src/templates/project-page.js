@@ -4,7 +4,7 @@ import { Link, graphql } from 'gatsby';
 import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import { rhythm, scale } from '../utils/typography';
+import { rhythm } from '../utils/typography';
 
 class ProjectPageTemplate extends React.Component {
   render() {

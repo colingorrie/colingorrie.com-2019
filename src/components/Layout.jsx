@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import { rhythm, scale } from '../utils/typography';
-
 import './Layout.css';
 
 const Layout = ({ location, title, children }) => {
@@ -11,21 +9,8 @@ const Layout = ({ location, title, children }) => {
 
   if (location.pathname === rootPath) {
     header = (
-      <h1
-        style={{
-          ...scale(1.5),
-          marginBottom: rhythm(1.5),
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
+      <h1 className="mt-0 mb-8 font-bold text-5xl">
+        <Link className="shadow-none no-underline" to={`/`}>
           {title}
         </Link>
       </h1>
@@ -33,33 +18,19 @@ const Layout = ({ location, title, children }) => {
   } else {
     header = (
       <h3
+        className="mt-0"
         style={{
           fontFamily: `Montserrat, sans-serif`,
-          marginTop: 0,
         }}
       >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
+        <Link className="shadow-none no-underline" to={`/`}>
           {title}
         </Link>
       </h3>
     );
   }
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
+    <div className="mx-auto max-w-xl px-6 py-3">
       <header>{header}</header>
       <main>{children}</main>
       <footer>© {new Date().getFullYear()} Colin Gorrie.</footer>
