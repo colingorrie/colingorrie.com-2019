@@ -15,7 +15,7 @@ const BlogIndex = ({ data, location }) => {
       <SEO title="Colin Gorrie" />
       <Bio />
       {map(({ fieldValue, edges }) => (
-        <div className="mb-6">
+        <div className="mb-6" key={fieldValue}>
           <h2 className="capitalize mb-4 text-xl">{fieldValue}</h2>
           {map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug;
