@@ -1,57 +1,49 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import map from 'lodash/fp/map';
 
 import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import { rhythm } from '../utils/typography';
 
-class BlogIndex extends React.Component {
-  render() {
-    const { data } = this.props;
-    const siteTitle = data.site.siteMetadata.title;
-    const categories = data.allMarkdownRemark.group;
+const BlogIndex = ({ data, location }) => {
+  const siteTitle = data.site.siteMetadata.title;
+  const categories = data.allMarkdownRemark.group;
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="Colin Gorrie" />
-        <Bio />
-        {map(({ fieldValue, edges }) => (
-          <div>
-            <h2 style={{ textTransform: 'capitalize' }}>{fieldValue}</h2>
-            {map(({ node }) => {
-              const title = node.frontmatter.title || node.fields.slug;
-              return (
-                <div key={node.fields.slug}>
-                  <h3
-                    style={{
-                      marginBottom: rhythm(1 / 4),
-                    }}
+  return (
+    <Layout location={location} title={siteTitle}>
+      <SEO title="Colin Gorrie" />
+      <Bio />
+      {map(({ fieldValue, edges }) => (
+        <div>
+          <h2 className="capitalize">{fieldValue}</h2>
+          {map(({ node }) => {
+            const title = node.frontmatter.title || node.fields.slug;
+            return (
+              <div key={node.fields.slug}>
+                <h3 className="mb-2">
+                  <a
+                    href={node.frontmatter.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <a
-                      href={node.frontmatter.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {title}
-                    </a>
-                  </h3>
-                  <small>{node.frontmatter.date}</small>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: node.frontmatter.description || node.excerpt,
-                    }}
-                  />
-                </div>
-              );
-            })(edges)}
-          </div>
-        ))(categories)}
-      </Layout>
-    );
-  }
-}
+                    {title}
+                  </a>
+                </h3>
+                <small>{node.frontmatter.date}</small>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: node.frontmatter.description || node.excerpt,
+                  }}
+                />
+              </div>
+            );
+          })(edges)}
+        </div>
+      ))(categories)}
+    </Layout>
+  );
+};
 
 export default BlogIndex;
 
