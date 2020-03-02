@@ -69,5 +69,12 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true,
+        allExtensions: true,
+      },
+    },
   ],
 };

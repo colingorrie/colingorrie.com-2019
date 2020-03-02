@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { graphql } from 'gatsby';
 import map from 'lodash/fp/map';
 
@@ -6,7 +6,7 @@ import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
-const BlogIndex = ({ data, location }) => {
+const BlogIndex: FunctionComponent = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
   const categories = data.allMarkdownRemark.group;
 
