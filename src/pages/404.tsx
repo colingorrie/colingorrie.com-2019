@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
-const NotFoundPage = ({ data, location }) => {
+const NotFoundPage: FunctionComponent = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
 
   return (

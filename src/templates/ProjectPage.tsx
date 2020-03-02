@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Link, graphql } from 'gatsby';
 
 import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
-const ProjectPageTemplate = props => {
+const ProjectPageTemplate: FunctionComponent = props => {
   const post = props.data.markdownRemark;
   const siteTitle = props.data.site.siteMetadata.title;
   const { previous, next } = props.pageContext;

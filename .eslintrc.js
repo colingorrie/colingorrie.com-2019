@@ -13,6 +13,9 @@ module.exports = {
     'prettier/@typescript-eslint',
     'plugin:jsx-a11y/strict',
   ],
+  globals: {
+    __PATH_PREFIX__: true,
+  },
   overrides: [
     {
       files: ['**/*.tsx'],
