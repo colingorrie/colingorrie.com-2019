@@ -6,7 +6,36 @@ import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
-const BlogIndex: FunctionComponent = ({ data, location }) => {
+type Props = {
+  location: Location;
+  data: {
+    site: {
+      siteMetadata: {
+        title: string;
+      };
+    };
+    allMarkdownRemark: {
+      group: {
+        [key: string]: {
+          node: {
+            frontMatter: {
+              title?: string;
+              url: string;
+              date: string;
+              description?: string;
+            };
+            fields: {
+              slug: string;
+            };
+            excerpt: string;
+          };
+        }[];
+      };
+    };
+  };
+};
+
+const BlogIndex: FunctionComponent<Props> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
   const categories = data.allMarkdownRemark.group;
 

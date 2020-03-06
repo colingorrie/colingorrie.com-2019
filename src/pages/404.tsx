@@ -4,7 +4,18 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
-const NotFoundPage: FunctionComponent = ({ data, location }) => {
+type Props = {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string;
+      };
+    };
+  };
+  location: Location;
+};
+
+const NotFoundPage: FunctionComponent<Props> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
 
   return (

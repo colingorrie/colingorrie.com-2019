@@ -5,7 +5,44 @@ import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
-const ProjectPageTemplate: FunctionComponent = props => {
+type Props = {
+  data: {
+    markdownRemark: {
+      frontmatter: {
+        title: string;
+        description?: string;
+      };
+      excerpt: string;
+      html: string;
+    };
+    site: {
+      siteMetadata: {
+        title: string;
+      };
+    };
+  };
+  location: Location;
+  pageContext: {
+    previous: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+      };
+    };
+    next: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+      };
+    };
+  };
+};
+
+const ProjectPageTemplate: FunctionComponent<Props> = props => {
   const post = props.data.markdownRemark;
   const siteTitle = props.data.site.siteMetadata.title;
   const { previous, next } = props.pageContext;
