@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Colin Gorrie`,
@@ -21,6 +25,18 @@ module.exports = {
       options: {
         path: `${__dirname}/content/assets`,
         name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-source-airtable`,
+      options: {
+        apiKey: process.env.AIRTABLE_API_KEY,
+        tables: [
+          {
+            baseId: `app8D8IxuFkE09HNK`,
+            tableName: `SalesPages`,
+          },
+        ],
       },
     },
     {
