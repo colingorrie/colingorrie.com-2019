@@ -16,7 +16,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/projects`,
+        path: `${__dirname}/src/pages`,
         name: `blog`,
       },
     },
@@ -34,8 +34,19 @@ module.exports = {
         tables: [
           {
             baseId: `app8D8IxuFkE09HNK`,
-            tableName: `SalesPages`,
+            tableName: `Pages`,
+            // tableLinks: [`page`],
+            queryName: `Pages`,
+            separateNodeType: true,
+            separateMapType: true,
           },
+          // {
+          //   baseId: `app8D8IxuFkE09HNK`,
+          //   tableName: `SalesPages`,
+          //   queryName: `SalesPages`,
+          //   separateNodeType: true,
+          //   separateMapType: true,
+          // },
         ],
       },
     },
@@ -82,7 +93,7 @@ module.exports = {
         icon: `content/assets/gatsby-icon.png`,
       },
     },
-    `gatsby-plugin-offline`,
+    // `gatsby-plugin-offline`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
     {
