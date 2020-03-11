@@ -8,11 +8,17 @@ type Props = {
   };
 };
 
-export const SalesPageSection: FunctionComponent<Props> = ({ section }) => {
+export const SalesPageSection: FunctionComponent<Props> = ({
+  children,
+  section,
+}) => {
   return (
-    <div
-      className="content mb-8"
-      dangerouslySetInnerHTML={{ __html: section.childMarkdownRemark.html }}
-    />
+    <div className="mb-8">
+      <div
+        className="content"
+        dangerouslySetInnerHTML={{ __html: section.childMarkdownRemark.html }}
+      ></div>
+      {children}
+    </div>
   );
 };

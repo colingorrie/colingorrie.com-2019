@@ -4,6 +4,7 @@ import { Link, graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import { SalesPageSection } from '../components/SalesPageSection';
+import { EmailOptin } from '../components/EmailOptin';
 
 type MarkdownField = {
   childMarkdownRemark: {
@@ -47,15 +48,21 @@ const SalesPage: FunctionComponent<Props> = ({ data, location }) => {
   return (
     <Layout location={location} title={title}>
       <SEO title={title} />
-      <SalesPageSection section={contentData.pain} />
-      <SalesPageSection section={contentData.dream} />
-      <SalesPageSection section={contentData.fix} />
-      <SalesPageSection section={contentData.cta1} />
-      <SalesPageSection section={contentData.socialProof} />
-      <SalesPageSection section={contentData.overcomeObjections} />
-      <SalesPageSection section={contentData.uniqueness} />
-      <SalesPageSection section={contentData.cta2} />
-      <SalesPageSection section={contentData.urgency} />
+      <SalesPageSection section={contentData.pain}></SalesPageSection>
+      <SalesPageSection section={contentData.dream}></SalesPageSection>
+      <SalesPageSection section={contentData.fix}></SalesPageSection>
+      <SalesPageSection section={contentData.cta1}>
+        <EmailOptin idPrefix="cta1" />
+      </SalesPageSection>
+      <SalesPageSection section={contentData.socialProof}></SalesPageSection>
+      <SalesPageSection
+        section={contentData.overcomeObjections}
+      ></SalesPageSection>
+      <SalesPageSection section={contentData.uniqueness}></SalesPageSection>
+      <SalesPageSection section={contentData.cta2}>
+        <EmailOptin idPrefix="cta2" />
+      </SalesPageSection>
+      <SalesPageSection section={contentData.urgency}></SalesPageSection>
     </Layout>
   );
 };
