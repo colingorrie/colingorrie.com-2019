@@ -3,6 +3,13 @@ import { Link, graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
+import { SalesPageSection } from '../components/SalesPageSection';
+
+type MarkdownField = {
+  childMarkdownRemark: {
+    html: string;
+  };
+};
 
 type Props = {
   location: Location;
@@ -12,15 +19,15 @@ type Props = {
         title: string;
         content: {
           data: {
-            pain: string;
-            dream: string;
-            fix: string;
-            cta1: string;
-            socialProof: string;
-            overcomeObjections: string;
-            uniqueness: string;
-            cta2: string;
-            urgency: string;
+            pain: MarkdownField;
+            dream: MarkdownField;
+            fix: MarkdownField;
+            cta1: MarkdownField;
+            socialProof: MarkdownField;
+            overcomeObjections: MarkdownField;
+            uniqueness: MarkdownField;
+            cta2: MarkdownField;
+            urgency: MarkdownField;
           };
         }[];
       };
@@ -35,21 +42,20 @@ const SalesPage: FunctionComponent<Props> = ({ data, location }) => {
   const { airtablePages: page } = data;
   const { title, content } = page.data;
 
+  const contentData = content[0].data;
+
   return (
     <Layout location={location} title={title}>
       <SEO title={title} />
-      <h1>{title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: content[0].data.pain }} />
-      <div dangerouslySetInnerHTML={{ __html: content[0].data.dream }} />
-      <div dangerouslySetInnerHTML={{ __html: content[0].data.fix }} />
-      <div dangerouslySetInnerHTML={{ __html: content[0].data.cta1 }} />
-      <div dangerouslySetInnerHTML={{ __html: content[0].data.socialProof }} />
-      <div
-        dangerouslySetInnerHTML={{ __html: content[0].data.overcomeObjections }}
-      />
-      <div dangerouslySetInnerHTML={{ __html: content[0].data.uniqueness }} />
-      <div dangerouslySetInnerHTML={{ __html: content[0].data.cta2 }} />
-      <div dangerouslySetInnerHTML={{ __html: content[0].data.urgency }} />
+      <SalesPageSection section={contentData.pain} />
+      <SalesPageSection section={contentData.dream} />
+      <SalesPageSection section={contentData.fix} />
+      <SalesPageSection section={contentData.cta1} />
+      <SalesPageSection section={contentData.socialProof} />
+      <SalesPageSection section={contentData.overcomeObjections} />
+      <SalesPageSection section={contentData.uniqueness} />
+      <SalesPageSection section={contentData.cta2} />
+      <SalesPageSection section={contentData.urgency} />
     </Layout>
   );
 };
@@ -65,15 +71,52 @@ export const pageQuery = graphql`
         title
         content {
           data {
-            pain
-            dream
-            fix
-            cta1
-            socialProof
-            overcomeObjections
-            uniqueness
-            cta2
-            urgency
+            cta1 {
+              childMarkdownRemark {
+                html
+              }
+            }
+            dream {
+              childMarkdownRemark {
+                html
+              }
+            }
+            uniqueness {
+              childMarkdownRemark {
+                html
+              }
+            }
+            cta2 {
+              childMarkdownRemark {
+                html
+              }
+            }
+            name
+            overcomeObjections {
+              childMarkdownRemark {
+                html
+              }
+            }
+            fix {
+              childMarkdownRemark {
+                html
+              }
+            }
+            pain {
+              childMarkdownRemark {
+                html
+              }
+            }
+            urgency {
+              childMarkdownRemark {
+                html
+              }
+            }
+            socialProof {
+              childMarkdownRemark {
+                html
+              }
+            }
           }
         }
       }

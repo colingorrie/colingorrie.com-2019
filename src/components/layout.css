@@ -7,11 +7,11 @@
 }
 
 .section-heading {
-  @apply mt-0 mb-2 font-bold text-2xl;
+  @apply mt-0 mb-4 font-bold text-2xl;
 }
 
 .subsection-heading {
-  @apply mt-0 mb-2 text-xl;
+  @apply mt-0 mb-4 text-xl;
 }
 
 @tailwind utilities;
@@ -38,15 +38,15 @@
 }
 
 .content p {
-  @apply mb-2;
+  @apply mb-4;
 }
 
 .content ol {
-  @apply mb-2 list-decimal pl-4;
+  @apply mb-4 list-decimal pl-4;
 }
 
 .content ul {
-  @apply mb-2 list-disc pl-4;
+  @apply mb-4 list-disc pl-4;
 }
 
 /* purgecss ignore */
