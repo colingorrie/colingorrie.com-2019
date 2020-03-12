@@ -14,6 +14,7 @@ export const EmailOptin: FunctionComponent<Props> = ({ idPrefix }) => {
   return (
     <form
       name="newsletter"
+      method="POST"
       data-netlify="true"
       netlify-honeypot="bot-field"
       className="flex flex-col mb-8 bg-gray-300 p-4 shadow-sm"
@@ -25,7 +26,7 @@ export const EmailOptin: FunctionComponent<Props> = ({ idPrefix }) => {
           id={firstNameId}
           type="text"
           placeholder="Your first name"
-          name="First name"
+          name="first_name"
           required
           ref={register({ required: true, maxLength: 80 })}
           className="w-64 mb-2 border-2 border-solid border-gray-400 py-1 px-2"
@@ -37,7 +38,7 @@ export const EmailOptin: FunctionComponent<Props> = ({ idPrefix }) => {
           id={emailId}
           type="text"
           placeholder="Your email address"
-          name="Email"
+          name="email"
           required
           ref={register({ required: true, pattern: /^\S+@\S+$/i })}
           className="w-64 mb-2 border-2 border-solid border-gray-400 py-1 px-2"
