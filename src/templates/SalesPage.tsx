@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import { Link, graphql } from 'gatsby';
 
-import Layout from '../components/Layout';
-import SEO from '../components/SEO';
-import { SalesPageSection } from '../components/SalesPageSection';
 import { EmailOptin } from '../components/EmailOptin';
+import Layout from '../components/Layout';
+import { SalesPageSection } from '../components/SalesPageSection';
+import SEO from '../components/SEO';
+import { Testimonial } from '../components/Testimonial';
 
 type MarkdownField = {
   childMarkdownRemark: {
@@ -54,7 +55,9 @@ const SalesPage: FunctionComponent<Props> = ({ data, location }) => {
       <SalesPageSection section={contentData.cta1}>
         <EmailOptin idPrefix="cta1" />
       </SalesPageSection>
-      <SalesPageSection section={contentData.socialProof}></SalesPageSection>
+      <SalesPageSection section={contentData.socialProof}>
+        <Testimonial />
+      </SalesPageSection>
       <SalesPageSection
         section={contentData.overcomeObjections}
       ></SalesPageSection>

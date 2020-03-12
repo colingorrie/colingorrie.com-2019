@@ -47,7 +47,7 @@ export const EmailOptin: FunctionComponent<Props> = ({ idPrefix }) => {
 
       <input
         type="submit"
-        className="w-24 py-1 border-solid text-white bg-teal-700 shadow-md border-t-2 border-teal-600 my-2"
+        className="w-24 py-1 border-solid text-white bg-teal-700 shadow-md border-t-2 border-teal-600 mt-2"
       />
     </form>
   );
