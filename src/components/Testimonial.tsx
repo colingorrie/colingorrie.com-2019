@@ -1,22 +1,30 @@
 import React, { FunctionComponent } from 'react';
 
-type Props = {};
+import { Testimonial as TestimonialType } from '../types';
 
-export const Testimonial: FunctionComponent<Props> = () => {
-  const name = 'George Borges';
-  const text =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.';
-  const url = 'https://colingorrie.com';
+import { Image } from './Image';
+
+type Props = {
+  data: TestimonialType;
+};
+
+export const Testimonial: FunctionComponent<Props> = ({ data }) => {
+  const { name, url } = data;
+  const text = data.text.childMarkdownRemark.html;
+  const image = data.image.localFiles[0];
 
   return (
     <div className="flex flex-row mb-8 p-4 shadow-sm">
-      <img
-        src="https://via.placeholder.com/150"
-        className="rounded-full mr-4 self-start"
+      <Image
+        node={image}
+        className="rounded-full mr-4 self-start flex-shrink-0"
         alt={name}
       />
       <div>
-        <p className="mb-2">{text}</p>
+        <div
+          className="mb-2 content"
+          dangerouslySetInnerHTML={{ __html: text }}
+        />
         <p>
           &mdash;{' '}
           <a href={url} className="text-teal-700 underline">

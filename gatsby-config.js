@@ -55,6 +55,18 @@ module.exports = {
               cta2: `text/markdown`,
               urgency: `text/markdown`,
             },
+            tableLinks: [`testimonials`],
+            separateNodeType: true,
+            separateMapType: true,
+          },
+          {
+            baseId: `app8D8IxuFkE09HNK`,
+            tableName: `Testimonials`,
+            mapping: {
+              text: 'text/markdown',
+              image: 'fileNode',
+            },
+            queryName: `Testimonials`,
             separateNodeType: true,
             separateMapType: true,
           },

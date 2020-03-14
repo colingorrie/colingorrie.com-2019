@@ -1,17 +1,12 @@
 import React, { FunctionComponent } from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import { EmailOptin } from '../components/EmailOptin';
 import Layout from '../components/Layout';
 import { SalesPageSection } from '../components/SalesPageSection';
 import SEO from '../components/SEO';
 import { Testimonial } from '../components/Testimonial';
-
-type MarkdownField = {
-  childMarkdownRemark: {
-    html: string;
-  };
-};
+import { MarkdownField, TestimonialField } from '../types';
 
 type Props = {
   location: Location;
@@ -26,6 +21,7 @@ type Props = {
             fix: MarkdownField;
             cta1: MarkdownField;
             socialProof: MarkdownField;
+            testimonials: TestimonialField[];
             overcomeObjections: MarkdownField;
             uniqueness: MarkdownField;
             cta2: MarkdownField;
@@ -56,7 +52,9 @@ const SalesPage: FunctionComponent<Props> = ({ data, location }) => {
         <EmailOptin idPrefix="cta1" />
       </SalesPageSection>
       <SalesPageSection section={contentData.socialProof}>
-        <Testimonial />
+        {contentData.testimonials.map(testimonial => (
+          <Testimonial key={testimonial.data.name} data={testimonial.data} />
+        ))}
       </SalesPageSection>
       <SalesPageSection
         section={contentData.overcomeObjections}
@@ -125,6 +123,26 @@ export const pageQuery = graphql`
             socialProof {
               childMarkdownRemark {
                 html
+              }
+            }
+            testimonials {
+              data {
+                name
+                image {
+                  localFiles {
+                    childImageSharp {
+                      fixed(width: 150, height: 150, quality: 100) {
+                        ...GatsbyImageSharpFixed
+                      }
+                    }
+                  }
+                }
+                text {
+                  childMarkdownRemark {
+                    html
+                  }
+                }
+                url
               }
             }
           }
