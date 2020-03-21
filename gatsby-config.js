@@ -136,5 +136,8 @@ module.exports = {
         allExtensions: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-netlify`,
+    },
   ],
 };

@@ -1,7 +1,4 @@
 const path = require(`path`);
-const parseFilepath = require('parse-filepath');
-
-const { createFilePath } = require(`gatsby-source-filesystem`);
 
 const SalesPage = path.resolve(`src/templates/SalesPage.tsx`);
 const EmailPage = path.resolve(`src/templates/EmailPage.tsx`);
@@ -124,7 +121,14 @@ const createSalesPages = (graphql, createPage) =>
   });
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
+
+  createRedirect({
+    fromPath: '/',
+    toPath: '/newsletter',
+    statusCode: 200,
+    redirectInBrowser: true,
+  });
 
   return Promise.all([
     createSalesPages(graphql, createPage),
