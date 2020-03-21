@@ -16,6 +16,10 @@
 
 @tailwind utilities;
 
+.link {
+  @apply cursor-pointer text-teal-700 underline;
+}
+
 .content h1 {
   @apply page-title;
 }

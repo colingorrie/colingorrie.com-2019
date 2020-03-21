@@ -1,8 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'gatsby';
 
-import './layout.css';
-
 type Props = {
   location: {
     pathname: string;
@@ -32,11 +30,25 @@ const Layout: FunctionComponent<Props> = ({ location, title, children }) => {
     );
   }
   return (
-    <div className="mx-auto max-w-xl px-6 py-3 flex flex-col min-h-screen">
+    <div className="mx-auto max-w-xl px-6 md:px-0 py-10 flex flex-col min-h-screen">
       <header>{header}</header>
       <main className="flex-grow">{children}</main>
-      <footer className="self-center">
-        © {new Date().getFullYear()} Colin Gorrie.
+      <footer className="self-center text-center text-gray-700">
+        <div className="mb-4">Colin Gorrie</div>
+        <nav>
+          <ul className="flex flex-row">
+            <li className="mx-4">
+              <a href="/" className="link">
+                Home
+              </a>
+            </li>
+            <li className="mx-4">
+              <a href="/emails" className="link">
+                Email Archive
+              </a>
+            </li>
+          </ul>
+        </nav>
       </footer>
     </div>
   );

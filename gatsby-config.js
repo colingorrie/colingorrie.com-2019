@@ -70,6 +70,16 @@ module.exports = {
             separateNodeType: true,
             separateMapType: true,
           },
+          {
+            baseId: `app8D8IxuFkE09HNK`,
+            tableName: `Emails`,
+            mapping: {
+              body: 'text/markdown',
+            },
+            queryName: `Emails`,
+            separateNodeType: true,
+            separateMapType: true,
+          },
         ],
       },
     },
