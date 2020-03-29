@@ -53,6 +53,14 @@
   @apply mb-4 list-disc pl-4;
 }
 
+.content ol li {
+  @apply mb-1;
+}
+
+.content ul li {
+  @apply mb-1;
+}
+
 /* purgecss ignore */
 .content blockquote {
   @apply m-0;

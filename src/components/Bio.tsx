@@ -8,7 +8,6 @@ type Props = {
 
 const Bio: FunctionComponent<Props> = ({ data }) => {
   const image = data.image[0].data;
-  console.log(image);
 
   return (
     <div className="flex flex-col">
