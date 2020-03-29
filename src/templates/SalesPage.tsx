@@ -1,12 +1,13 @@
 import React, { FunctionComponent } from 'react';
 import { graphql } from 'gatsby';
 
+import Bio from '../components/Bio';
 import { EmailOptin } from '../components/EmailOptin';
 import Layout from '../components/Layout';
 import { SalesPageSection } from '../components/SalesPageSection';
 import SEO from '../components/SEO';
 import { Testimonial } from '../components/Testimonial';
-import { MarkdownField, TestimonialField } from '../types';
+import { MarkdownField, TestimonialField, BioField } from '../types';
 
 type Props = {
   location: Location;
@@ -24,6 +25,7 @@ type Props = {
             testimonials: TestimonialField[];
             overcomeObjections: MarkdownField;
             uniqueness: MarkdownField;
+            bio: BioField[];
             cta2: MarkdownField;
             urgency: MarkdownField;
           };
@@ -59,7 +61,11 @@ const SalesPage: FunctionComponent<Props> = ({ data, location }) => {
       <SalesPageSection
         section={contentData.overcomeObjections}
       ></SalesPageSection>
-      <SalesPageSection section={contentData.uniqueness}></SalesPageSection>
+      <SalesPageSection section={contentData.uniqueness}>
+        {contentData.bio.map(bio => (
+          <Bio key={bio.data.name} data={bio.data} />
+        ))}
+      </SalesPageSection>
       <SalesPageSection section={contentData.cta2}>
         <EmailOptin idPrefix="cta2" />
       </SalesPageSection>
@@ -92,6 +98,29 @@ export const pageQuery = graphql`
             uniqueness {
               childMarkdownRemark {
                 html
+              }
+            }
+            bio {
+              data {
+                text {
+                  childMarkdownRemark {
+                    html
+                  }
+                }
+                image {
+                  data {
+                    alt
+                    image {
+                      localFiles {
+                        childImageSharp {
+                          fixed(width: 576, height: 400, quality: 100) {
+                            ...GatsbyImageSharpFixed
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
             cta2 {
