@@ -43,10 +43,15 @@ const Layout: FunctionComponent<Props> = ({ location, title, children }) => {
               </a>
             </li>
             <li className="mx-4">
+              <a href="/start-here" className="link">
+                Start Here
+              </a>
+            </li>
+            {/* <li className="mx-4">
               <a href="/emails" className="link">
                 Email Archive
               </a>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </footer>

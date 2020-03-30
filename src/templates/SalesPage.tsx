@@ -7,7 +7,7 @@ import Layout from '../components/Layout';
 import { SalesPageSection } from '../components/SalesPageSection';
 import SEO from '../components/SEO';
 import { Testimonial } from '../components/Testimonial';
-import { MarkdownField, TestimonialField, BioField } from '../types';
+import { Field, Section } from '../types';
 
 type Props = {
   location: Location;
@@ -15,21 +15,7 @@ type Props = {
     airtablePages: {
       data: {
         title: string;
-        content: {
-          data: {
-            pain: MarkdownField;
-            dream: MarkdownField;
-            fix: MarkdownField;
-            cta1: MarkdownField;
-            socialProof: MarkdownField;
-            testimonials: TestimonialField[];
-            overcomeObjections: MarkdownField;
-            uniqueness: MarkdownField;
-            bio: BioField[];
-            cta2: MarkdownField;
-            urgency: MarkdownField;
-          };
-        }[];
+        sections: Field<Section>[];
       };
       fields: {
         slug: string;
@@ -40,36 +26,24 @@ type Props = {
 
 const SalesPage: FunctionComponent<Props> = ({ data, location }) => {
   const { airtablePages: page } = data;
-  const { title, content } = page.data;
-
-  const contentData = content[0].data;
+  const { title, sections } = page.data;
 
   return (
     <Layout location={location} title={title}>
       <SEO title={title} />
-      <SalesPageSection section={contentData.pain}></SalesPageSection>
-      <SalesPageSection section={contentData.dream}></SalesPageSection>
-      <SalesPageSection section={contentData.fix}></SalesPageSection>
-      <SalesPageSection section={contentData.cta1}>
-        <EmailOptin idPrefix="cta1" />
-      </SalesPageSection>
-      <SalesPageSection section={contentData.socialProof}>
-        {contentData.testimonials.map(testimonial => (
-          <Testimonial key={testimonial.data.name} data={testimonial.data} />
-        ))}
-      </SalesPageSection>
-      <SalesPageSection
-        section={contentData.overcomeObjections}
-      ></SalesPageSection>
-      <SalesPageSection section={contentData.uniqueness}>
-        {contentData.bio.map(bio => (
-          <Bio key={bio.data.name} data={bio.data} />
-        ))}
-      </SalesPageSection>
-      <SalesPageSection section={contentData.cta2}>
-        <EmailOptin idPrefix="cta2" />
-      </SalesPageSection>
-      <SalesPageSection section={contentData.urgency}></SalesPageSection>
+      {sections.map(section => (
+        <SalesPageSection key={section.data.name} text={section.data.text}>
+          {section.data.bio?.map(bio => (
+            <Bio key={bio.data.name} data={bio.data} />
+          ))}
+          {section.data.testimonials?.map(testimonial => (
+            <Testimonial key={testimonial.data.name} data={testimonial.data} />
+          ))}
+          {section.data.type === 'cta' && (
+            <EmailOptin idPrefix={section.data.name} />
+          )}
+        </SalesPageSection>
+      ))}
     </Layout>
   );
 };
@@ -83,19 +57,11 @@ export const pageQuery = graphql`
       data {
         name
         title
-        content {
+        sections {
           data {
-            cta1 {
-              childMarkdownRemark {
-                html
-              }
-            }
-            dream {
-              childMarkdownRemark {
-                html
-              }
-            }
-            uniqueness {
+            name
+            type
+            text {
               childMarkdownRemark {
                 html
               }
@@ -121,37 +87,6 @@ export const pageQuery = graphql`
                     }
                   }
                 }
-              }
-            }
-            cta2 {
-              childMarkdownRemark {
-                html
-              }
-            }
-            name
-            overcomeObjections {
-              childMarkdownRemark {
-                html
-              }
-            }
-            fix {
-              childMarkdownRemark {
-                html
-              }
-            }
-            pain {
-              childMarkdownRemark {
-                html
-              }
-            }
-            urgency {
-              childMarkdownRemark {
-                html
-              }
-            }
-            socialProof {
-              childMarkdownRemark {
-                html
               }
             }
             testimonials {

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 type Props = {
-  section?: {
+  text?: {
     childMarkdownRemark: {
       html: string;
     };
@@ -10,14 +10,14 @@ type Props = {
 
 export const SalesPageSection: FunctionComponent<Props> = ({
   children,
-  section,
+  text,
 }) => {
   return (
     <div className="mb-8">
-      {section && (
+      {text && (
         <div
           className="content"
-          dangerouslySetInnerHTML={{ __html: section.childMarkdownRemark.html }}
+          dangerouslySetInnerHTML={{ __html: text.childMarkdownRemark.html }}
         ></div>
       )}
       {children}

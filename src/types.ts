@@ -28,16 +28,16 @@ export type Testimonial = {
   image: Image;
 };
 
-export type TestimonialField = {
-  data: Testimonial;
-};
-
 export type Bio = {
   name: string;
   text: MarkdownField;
   image: Field<Image>[];
 };
 
-export type BioField = {
-  data: Bio;
+export type Section = {
+  name: string;
+  type?: string;
+  text: MarkdownField;
+  testimonials?: Field<Testimonial>[];
+  bio?: Field<Bio>[];
 };

@@ -27,9 +27,13 @@ export const Testimonial: FunctionComponent<Props> = ({ data }) => {
         />
         <p>
           &mdash;{' '}
-          <a href={url} className="text-teal-700 underline">
-            {name}
-          </a>
+          {url ? (
+            <a href={url} className="text-teal-700 underline">
+              {name}
+            </a>
+          ) : (
+            name
+          )}
         </p>
       </div>
     </div>
