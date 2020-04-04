@@ -31,7 +31,7 @@ const SalesPage: FunctionComponent<Props> = ({ data, location }) => {
   return (
     <Layout location={location} title={title}>
       <SEO title={title} />
-      {sections.map(section => (
+      {sections?.map(section => (
         <SalesPageSection key={section.data.name} text={section.data.text}>
           {section.data.bio?.map(bio => (
             <Bio key={bio.data.name} data={bio.data} />
