@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `Colin Gorrie`,
     author: `Colin Gorrie`,
-    description: `Colin Gorrie, linguist and developer`,
+    description: `Colin Gorrie's home on the web`,
     siteUrl: `https://colingorrie.com/`,
     social: {
       twitter: `colingorrie`,
