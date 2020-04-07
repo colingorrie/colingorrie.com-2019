@@ -3,15 +3,15 @@
 @tailwind components;
 
 .page-title {
-  @apply mt-0 mb-8 font-bold text-5xl;
+  @apply mt-0 mb-8 font-bold text-5xl font-display tracking-wide uppercase;
 }
 
 .section-heading {
-  @apply mt-0 mb-4 font-bold text-2xl;
+  @apply mt-0 mb-4 font-bold text-3xl font-body uppercase;
 }
 
 .subsection-heading {
-  @apply mt-0 mb-4 text-xl;
+  @apply mt-0 mb-4 font-bold text-2xl font-body uppercase;
 }
 
 @tailwind utilities;
