@@ -21,7 +21,11 @@ const Layout: FunctionComponent<Props> = ({ location, title, children }) => {
       </h1>
     );
   } else {
-    header = <h3 className="page-title mt-0 mb-4 font-bold">{title}</h3>;
+    header = (
+      <h3 className="bg-brand-500 text-white px-8 py-3 page-title mt-0 mb-6 font-bold inline-block">
+        {title}
+      </h3>
+    );
   }
   return (
     <div className="mx-auto max-w-xl px-6 md:px-0 py-10 flex flex-col min-h-screen">

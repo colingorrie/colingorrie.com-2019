@@ -21,6 +21,7 @@ export const SalesPageSection: FunctionComponent<Props> = ({
         ></div>
       )}
       {children}
+      <hr className="h-3 bg-brand-500 w-1/2" />
     </div>
   );
 };

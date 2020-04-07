@@ -2,6 +2,10 @@
 
 @tailwind components;
 
+hr {
+  @apply h-3;
+}
+
 .page-title {
   @apply mt-0 mb-8 font-bold text-5xl font-display tracking-wide uppercase;
 }
