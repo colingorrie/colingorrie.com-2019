@@ -12,7 +12,7 @@ const Bio: FunctionComponent<Props> = ({ data }) => {
   return (
     <div className="flex flex-col">
       <Image
-        fixed={image.image.localFiles[0].childImageSharp.fixed}
+        fluid={image.image.localFiles[0].childImageSharp.fluid}
         alt={image.alt}
         className="mb-6"
       />

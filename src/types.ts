@@ -1,4 +1,4 @@
-import { FixedObject } from 'gatsby-image';
+import { FixedObject, FluidObject } from 'gatsby-image';
 
 export type Field<T> = {
   data: T;
@@ -9,7 +9,8 @@ export type Image = {
   image: {
     localFiles: {
       childImageSharp: {
-        fixed: FixedObject;
+        fixed?: FixedObject;
+        fluid?: FluidObject;
       };
     }[];
   };
