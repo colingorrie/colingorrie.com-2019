@@ -13,7 +13,7 @@ export const SalesPageSection: FunctionComponent<Props> = ({
   text,
 }) => {
   return (
-    <div className="mb-8">
+    <div className="mb-12">
       {text && (
         <div
           className="content"
@@ -21,7 +21,6 @@ export const SalesPageSection: FunctionComponent<Props> = ({
         ></div>
       )}
       {children}
-      <hr className="h-3 bg-brand-500 w-1/2" />
     </div>
   );
 };

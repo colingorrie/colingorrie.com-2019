@@ -11,10 +11,14 @@ hr {
 }
 
 .section-heading {
-  @apply mt-0 mb-4 font-bold text-3xl font-body uppercase;
+  @apply mt-0 mb-4 font-bold text-4xl font-body uppercase;
 }
 
 .subsection-heading {
+  @apply mt-0 mb-4 font-bold text-3xl font-body uppercase border-teal-500 border-solid border-l-8 pl-4 -ml-6;
+}
+
+.subsubsection-heading {
   @apply mt-0 mb-4 font-bold text-2xl font-body uppercase;
 }
 
@@ -33,6 +37,10 @@ hr {
 }
 
 .content h3 {
+  @apply subsection-heading;
+}
+
+.content h4 {
   @apply subsection-heading;
 }
 
@@ -63,6 +71,10 @@ hr {
 
 .content ul li {
   @apply mb-1;
+}
+
+.content hr {
+  @apply h-3 bg-brand-500 w-1/2 mb-8;
 }
 
 /* purgecss ignore */
