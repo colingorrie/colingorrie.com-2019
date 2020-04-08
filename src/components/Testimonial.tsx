@@ -14,10 +14,10 @@ export const Testimonial: FunctionComponent<Props> = ({ data }) => {
   const image = data.image.localFiles[0];
 
   return (
-    <div className="flex flex-row mb-8 p-4 shadow-sm">
+    <div className="flex flex-col mb-8 p-4 shadow-sm">
       <Image
         node={image}
-        className="rounded-full mr-4 self-start flex-shrink-0"
+        className="rounded-full mb-4 self-center flex-shrink-0"
         alt={name}
       />
       <div>
