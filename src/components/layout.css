@@ -2,10 +2,6 @@
 
 @tailwind components;
 
-hr {
-  @apply h-3;
-}
-
 .page-title {
   @apply mt-0 mb-8 font-bold text-5xl font-display tracking-wide uppercase;
 }
@@ -15,7 +11,7 @@ hr {
 }
 
 .subsection-heading {
-  @apply mt-0 mb-4 font-bold text-3xl font-body uppercase border-teal-500 border-solid border-l-8 pl-4 -ml-6;
+  @apply mt-0 mb-4 font-bold text-3xl font-body uppercase border-brand-500 border-solid border-l-8 pl-4 -ml-6;
 }
 
 .subsubsection-heading {
@@ -93,7 +89,7 @@ hr {
 }
 
 .content a {
-  @apply cursor-pointer text-teal-700 underline;
+  @apply cursor-pointer text-brand-500 underline;
 }
 
 /* purgecss ignore */
