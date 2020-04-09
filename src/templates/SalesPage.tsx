@@ -92,6 +92,7 @@ export const pageQuery = graphql`
             testimonials {
               data {
                 name
+                title
                 image {
                   localFiles {
                     childImageSharp {

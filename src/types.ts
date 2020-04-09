@@ -22,6 +22,7 @@ export type MarkdownField = {
 
 export type Testimonial = {
   name: string;
+  title?: string;
   url: string;
   text: MarkdownField;
   image: Image;

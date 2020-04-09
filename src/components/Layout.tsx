@@ -14,7 +14,7 @@ const Layout: FunctionComponent<Props> = ({ location, title, children }) => {
 
   if (location.pathname === rootPath) {
     header = (
-      <h1 className="page-title">
+      <h1 className="site-title">
         <Link className="shadow-none no-underline" to={`/`}>
           {title}
         </Link>
@@ -22,24 +22,25 @@ const Layout: FunctionComponent<Props> = ({ location, title, children }) => {
     );
   } else {
     header = (
-      <h3 className="bg-brand-500 text-white px-8 py-3 page-title mt-0 mb-6 font-bold inline-block">
-        {title}
+      <h3 className="site-title">
+        <Link className="shadow-none no-underline" to={`/`}>
+          {title}
+        </Link>
       </h3>
     );
   }
   return (
     <div className="mx-auto max-w-xl px-6 md:px-0 py-10 flex flex-col min-h-screen">
-      <header>{header}</header>
       <main className="flex-grow">{children}</main>
       <footer className="self-center text-center text-gray-700">
-        <div className="mb-4">Colin Gorrie</div>
         <nav>
-          <ul className="flex flex-row">
-            <li className="mx-4">
+          <div>{header}</div>
+          <ul className="flex flex-row justify-center">
+            {/* <li className="mx-4">
               <a href="/" className="link">
                 Home
               </a>
-            </li>
+            </li> */}
             {/* <li className="mx-4">
               <a href="/start-here" className="link">
                 Start Here

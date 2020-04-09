@@ -5,7 +5,7 @@ type Props = {
   node?: {
     childImageSharp?: {
       fixed?: FixedObject;
-      fluid?: FluidObject & { presentationWidth: string };
+      fluid?: FluidObject & { presentationWidth?: string };
     };
     publicURL?: string;
   };

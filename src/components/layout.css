@@ -2,6 +2,28 @@
 
 @tailwind components;
 
+.site-title {
+  @apply mt-0 mb-8 font-bold text-3xl font-display tracking-wide uppercase text-white px-8 py-3 relative;
+}
+
+.site-title > * {
+  @apply relative z-20;
+}
+
+.site-title::before {
+  background-image: url(/dotpattern.png);
+  background-size: 1500px;
+  content: '';
+  top: 8px;
+  left: -8px;
+  @apply w-full h-full absolute z-0 bg-center;
+}
+
+.site-title::after {
+  content: '';
+  @apply w-full h-full bg-brand-500 absolute top-0 left-0 z-10;
+}
+
 .page-title {
   @apply mt-0 mb-8 font-bold text-5xl font-display tracking-wide uppercase;
 }
@@ -21,7 +43,7 @@
 @tailwind utilities;
 
 .link {
-  @apply cursor-pointer text-teal-700 underline;
+  @apply cursor-pointer text-brand-500 underline;
 }
 
 .content h1 {
@@ -70,7 +92,21 @@
 }
 
 .content hr {
-  @apply h-3 bg-brand-500 w-1/2 mb-8;
+  @apply h-3 w-1/2 mb-8 relative;
+}
+
+.content hr::before {
+  background-image: url(/dotpattern.png);
+  background-size: 1500px;
+  content: '';
+  top: 8px;
+  left: -8px;
+  @apply w-full h-full absolute z-0 bg-center;
+}
+
+.content hr::after {
+  content: '';
+  @apply w-full h-full bg-brand-500 absolute top-0 left-0 z-10;
 }
 
 /* purgecss ignore */

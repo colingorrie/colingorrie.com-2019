@@ -9,12 +9,12 @@ type Props = {
 };
 
 export const Testimonial: FunctionComponent<Props> = ({ data }) => {
-  const { name, url } = data;
+  const { name, url, title } = data;
   const text = data.text.childMarkdownRemark.html;
   const image = data.image.localFiles[0];
 
   return (
-    <div className="flex flex-col mb-8 p-4 shadow-sm">
+    <div className="flex flex-col mb-8 p-10 border-accent-500 border-2 border-solid">
       <Image
         node={image}
         className="rounded-full mb-4 self-center flex-shrink-0"
@@ -25,8 +25,7 @@ export const Testimonial: FunctionComponent<Props> = ({ data }) => {
           className="mb-2 content"
           dangerouslySetInnerHTML={{ __html: text }}
         />
-        <p>
-          &mdash;{' '}
+        <p className="uppercase font-body text-xl font-bold">
           {url ? (
             <a href={url} className="text-teal-700 underline">
               {name}
@@ -35,6 +34,7 @@ export const Testimonial: FunctionComponent<Props> = ({ data }) => {
             name
           )}
         </p>
+        {title && <p className="italic">{title}</p>}
       </div>
     </div>
   );

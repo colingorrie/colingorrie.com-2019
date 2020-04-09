@@ -139,6 +139,13 @@ module.exports = {
         icon: `content/assets/gatsby-icon.png`,
       },
     },
+    {
+      resolve: 'gatsby-background-image',
+      options: {
+        // add your own characters to escape, replacing the default ':/'
+        specialChars: '/:',
+      },
+    },
     // `gatsby-plugin-offline`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
