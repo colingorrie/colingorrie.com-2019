@@ -33,7 +33,7 @@ export const EmailOptin: FunctionComponent<Props> = ({ idPrefix }) => {
             name="first_name"
             required
             ref={register({ required: true, maxLength: 80 })}
-            className="mt-1 mb-2 py-1 px-2 uppercase font-bold font-body text-lg"
+            className="mt-1 mb-2 py-2 px-2 font-bold font-body text-lg text-gray-700 normal-case"
           />
         </label>
         <label
@@ -48,7 +48,7 @@ export const EmailOptin: FunctionComponent<Props> = ({ idPrefix }) => {
             name="email"
             required
             ref={register({ required: true, pattern: /^\S+@\S+$/i })}
-            className="mt-1 mb-2 py-2 px-2 uppercase font-bold font-body text-lg"
+            className="mt-1 mb-2 py-2 px-2 font-bold font-body text-lg text-gray-700 normal-case"
           />
         </label>
 
