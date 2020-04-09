@@ -6,14 +6,12 @@ export type Field<T> = {
 
 export type Image = {
   alt: string;
-  image: {
-    localFiles: {
-      childImageSharp: {
-        fixed?: FixedObject;
-        fluid?: FluidObject;
-      };
-    }[];
-  };
+  localFiles: {
+    childImageSharp: {
+      fixed?: FixedObject;
+      fluid?: FluidObject;
+    };
+  }[];
 };
 
 export type MarkdownField = {
@@ -32,7 +30,7 @@ export type Testimonial = {
 export type Bio = {
   name: string;
   text: MarkdownField;
-  image: Field<Image>[];
+  image: Field<{ image: Image }>[];
 };
 
 export type Section = {

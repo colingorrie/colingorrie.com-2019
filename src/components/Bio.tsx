@@ -7,12 +7,12 @@ type Props = {
 };
 
 const Bio: FunctionComponent<Props> = ({ data }) => {
-  const image = data.image[0].data;
+  const { image } = data.image[0].data;
 
   return (
     <div className="flex flex-col">
       <Image
-        fluid={image.image.localFiles[0].childImageSharp.fluid}
+        fluid={image.localFiles[0].childImageSharp.fluid}
         alt={image.alt}
         className="mb-6"
       />
