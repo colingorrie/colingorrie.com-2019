@@ -81,8 +81,8 @@
   background-image: url(/dotpattern.png);
   background-size: 1500px;
   content: '';
-  top: 13px;
-  left: -8px;
+  top: 12px;
+  left: -6px;
   height: 85%;
   @apply w-3 absolute z-0 bg-center;
 }
