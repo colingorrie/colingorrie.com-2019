@@ -73,11 +73,10 @@
 }
 
 .content h4 {
-  @apply subsection-heading;
+  @apply subsubsection-heading;
 }
 
-.content h3::before,
-.content h4::before {
+.content h3::before {
   background-image: url(/dotpattern.png);
   background-size: 1500px;
   content: '';
@@ -87,8 +86,7 @@
   @apply w-3 absolute z-0 bg-center;
 }
 
-.content h3::after,
-.content h4::after {
+.content h3::after {
   content: '';
   top: 5px;
   height: 85%;
