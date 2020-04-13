@@ -125,7 +125,7 @@ exports.createPages = ({ graphql, actions }) => {
 
   createRedirect({
     fromPath: '/',
-    toPath: '/newsletter',
+    toPath: '/science-to-tech-roadmap',
     statusCode: 200,
     redirectInBrowser: true,
   });
