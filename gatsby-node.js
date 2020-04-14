@@ -87,6 +87,7 @@ const createSalesPages = (graphql, createPage) =>
                   id
                   data {
                     name
+                    published
                   }
                   fields {
                     slug
@@ -105,15 +106,17 @@ const createSalesPages = (graphql, createPage) =>
           reject(result.errors);
         }
 
-        result.data.allAirtablePages.edges.forEach(edge => {
-          createPage({
-            path: edge.node.fields.slug, // required, we don't have frontmatter for this page hence separate if()
-            component: SalesPage,
-            context: {
-              name: edge.node.data.name,
-            },
+        result.data.allAirtablePages.edges
+          .filter(edge => edge.node.data.published)
+          .forEach(edge => {
+            createPage({
+              path: edge.node.fields.slug, // required, we don't have frontmatter for this page hence separate if()
+              component: SalesPage,
+              context: {
+                name: edge.node.data.name,
+              },
+            });
           });
-        });
 
         return;
       })

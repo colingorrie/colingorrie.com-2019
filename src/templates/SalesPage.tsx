@@ -15,6 +15,7 @@ type Props = {
     airtablePages: {
       data: {
         title: string;
+        showTitle: boolean;
         sections: Field<Section>[];
       };
       fields: {
@@ -26,10 +27,10 @@ type Props = {
 
 const SalesPage: FunctionComponent<Props> = ({ data, location }) => {
   const { airtablePages: page } = data;
-  const { title, sections } = page.data;
+  const { title, showTitle, sections } = page.data;
 
   return (
-    <Layout location={location} title={title}>
+    <Layout location={location} title={title} showTitle={showTitle}>
       <SEO title={title} />
       {sections?.map(section => (
         <SalesPageSection key={section.data.name} text={section.data.text}>
@@ -56,6 +57,7 @@ export const pageQuery = graphql`
       id
       data {
         name
+        showTitle
         title
         sections {
           data {

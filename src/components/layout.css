@@ -25,15 +25,15 @@
 }
 
 .page-title {
-  @apply mt-0 mb-8 font-bold text-5xl font-display tracking-wide uppercase text-center;
+  @apply font-bold text-5xl font-body text-white uppercase leading-tight;
 }
 
 .section-heading {
-  @apply mt-0 mb-4 font-bold text-4xl font-body uppercase;
+  @apply mt-4 mb-4 font-bold text-4xl font-body uppercase;
 }
 
 .subsection-heading {
-  @apply mt-0 mb-4 font-bold text-3xl font-body uppercase pl-6 -ml-6 relative;
+  @apply mt-2 mb-4 font-bold text-3xl font-body uppercase pl-6 -ml-6 relative;
 }
 
 /* .subsection-heading::before {
@@ -51,7 +51,7 @@
 } */
 
 .subsubsection-heading {
-  @apply mt-0 mb-4 font-bold text-2xl font-body uppercase;
+  @apply mt-2 mb-4 font-bold text-2xl font-body uppercase;
 }
 
 .subsubsubsection-heading {
@@ -112,6 +112,15 @@
 
 .content p {
   @apply mb-4;
+}
+
+.content p + h3,
+.content p + h4 {
+  @apply mt-6;
+}
+
+.content p + h5 {
+  @apply mt-4;
 }
 
 .content ol {
@@ -175,4 +184,10 @@
 /* purgecss ignore */
 div[role='group'][tabindex] {
   height: 100%;
+}
+
+input,
+textarea {
+  -webkit-appearance: none;
+  border-radius: 0;
 }
