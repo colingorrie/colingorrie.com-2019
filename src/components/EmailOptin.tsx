@@ -17,7 +17,7 @@ export const EmailOptin: FunctionComponent<Props> = ({ idPrefix }) => {
       method="POST"
       data-netlify="true"
       netlify-honeypot="bot-field"
-      className="flex flex-col mb-8 bg-brand-500 p-12 shadow-sm align-center"
+      className="flex flex-col mb-8 bg-brand-500 p-12 shadow-sm align-center antialiased"
     >
       <div className="md:w-64 md:mx-auto">
         <input type="hidden" name="form-name" value="newsletter" />
@@ -54,7 +54,7 @@ export const EmailOptin: FunctionComponent<Props> = ({ idPrefix }) => {
 
         <input
           type="submit"
-          className="py-1 border-solid text-white bg-accent-500 border-4 border-white mt-4 font-display text-xl uppercase w-full md:block md:mx-auto md:w-48"
+          className="py-1 border-solid text-white bg-accent-500 border-4 border-white mt-4 font-display text-xl uppercase w-full md:block md:mx-auto md:w-48 antialiased"
         />
       </div>
     </form>
