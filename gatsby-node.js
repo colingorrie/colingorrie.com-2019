@@ -1,68 +1,140 @@
 const path = require(`path`);
-const { createFilePath } = require(`gatsby-source-filesystem`);
 
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
-
-  const projectPage = path.resolve(`./src/templates/ProjectPage.jsx`);
-  return graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___title], order: DESC }
-          filter: { frontmatter: { visible: { eq: true } } }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
-            }
-          }
-        }
-      }
-    `
-  ).then(result => {
-    if (result.errors) {
-      throw result.errors;
-    }
-
-    // Create blog posts pages.
-    const posts = result.data.allMarkdownRemark.edges;
-
-    posts.forEach((post, index) => {
-      const previous =
-        index === posts.length - 1 ? null : posts[index + 1].node;
-      const next = index === 0 ? null : posts[index - 1].node;
-
-      createPage({
-        path: post.node.fields.slug,
-        component: projectPage,
-        context: {
-          slug: post.node.fields.slug,
-          previous,
-          next,
-        },
-      });
-    });
-
-    return null;
-  });
-};
+const SalesPage = path.resolve(`src/templates/SalesPage.tsx`);
+const EmailPage = path.resolve(`src/templates/EmailPage.tsx`);
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
+  let slug;
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode });
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    });
+  if (node.internal.type === `AirtablePages` && node.table === `Pages`) {
+    slug = `${node.data.name
+      .replace(/ /g, '-')
+      .replace(/[,&]/g, '')
+      .toLowerCase()}/`;
+
+    // Add slug as a field on the node.
+    createNodeField({ node, name: `slug`, value: slug });
   }
+
+  if (node.internal.type === `AirtableEmails` && node.table === `Emails`) {
+    slug = `${node.data.name
+      .replace(/ /g, '-')
+      .replace(/[,&]/g, '')
+      .toLowerCase()}/`;
+
+    // Add slug as a field on the node.
+    createNodeField({ node, name: `slug`, value: slug });
+  }
+};
+
+const createEmailPages = (graphql, createPage) =>
+  new Promise((resolve, reject) => {
+    // Query for all markdown "nodes" and for the slug we previously created.
+    resolve(
+      graphql(
+        `
+          {
+            allAirtableEmails(filter: { table: { eq: "Emails" } }) {
+              edges {
+                node {
+                  id
+                  data {
+                    name
+                  }
+                  fields {
+                    slug
+                  }
+                }
+              }
+            }
+          }
+        `
+      ).then(result => {
+        if (result.errors) {
+          result.errors.forEach(error => {
+            console.log(error);
+          });
+
+          reject(result.errors);
+        }
+
+        result.data.allAirtableEmails.edges.forEach(edge => {
+          createPage({
+            path: `/emails/${edge.node.fields.slug}`, // required, we don't have frontmatter for this page hence separate if()
+            component: EmailPage,
+            context: {
+              name: edge.node.data.name,
+            },
+          });
+        });
+
+        return;
+      })
+    );
+  });
+
+const createSalesPages = (graphql, createPage) =>
+  new Promise((resolve, reject) => {
+    // Query for all markdown "nodes" and for the slug we previously created.
+    resolve(
+      graphql(
+        `
+          {
+            allAirtablePages(filter: { table: { eq: "Pages" } }) {
+              edges {
+                node {
+                  id
+                  data {
+                    name
+                    published
+                  }
+                  fields {
+                    slug
+                  }
+                }
+              }
+            }
+          }
+        `
+      ).then(result => {
+        if (result.errors) {
+          result.errors.forEach(error => {
+            console.log(error);
+          });
+
+          reject(result.errors);
+        }
+
+        result.data.allAirtablePages.edges
+          .filter(edge => edge.node.data.published)
+          .forEach(edge => {
+            createPage({
+              path: edge.node.fields.slug, // required, we don't have frontmatter for this page hence separate if()
+              component: SalesPage,
+              context: {
+                name: edge.node.data.name,
+              },
+            });
+          });
+
+        return;
+      })
+    );
+  });
+
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage, createRedirect } = actions;
+
+  createRedirect({
+    fromPath: '/',
+    toPath: '/science-to-tech-roadmap',
+    statusCode: 200,
+    redirectInBrowser: true,
+  });
+
+  return Promise.all([
+    createSalesPages(graphql, createPage),
+    createEmailPages(graphql, createPage),
+  ]);
 };

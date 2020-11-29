@@ -1,8 +1,12 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Colin Gorrie`,
     author: `Colin Gorrie`,
-    description: `Colin Gorrie, linguist and developer`,
+    description: `Colin Gorrie's home on the web`,
     siteUrl: `https://colingorrie.com/`,
     social: {
       twitter: `colingorrie`,
@@ -12,7 +16,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/projects`,
+        path: `${__dirname}/src/pages`,
         name: `blog`,
       },
     },
@@ -21,6 +25,75 @@ module.exports = {
       options: {
         path: `${__dirname}/content/assets`,
         name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-source-airtable`,
+      options: {
+        apiKey: process.env.AIRTABLE_API_KEY,
+        tables: [
+          {
+            baseId: `app8D8IxuFkE09HNK`,
+            tableName: `Pages`,
+            tableLinks: [`content`, `sections`],
+            queryName: `Pages`,
+            separateNodeType: true,
+            separateMapType: true,
+          },
+          {
+            baseId: `app8D8IxuFkE09HNK`,
+            tableName: `Testimonials`,
+            mapping: {
+              text: 'text/markdown',
+              image: 'fileNode',
+            },
+            queryName: `Testimonials`,
+            separateNodeType: true,
+            separateMapType: true,
+          },
+          {
+            baseId: `app8D8IxuFkE09HNK`,
+            tableName: `Emails`,
+            mapping: {
+              body: 'text/markdown',
+            },
+            queryName: `Emails`,
+            separateNodeType: true,
+            separateMapType: true,
+          },
+          {
+            baseId: `app8D8IxuFkE09HNK`,
+            tableName: `Images`,
+            mapping: {
+              image: 'fileNode',
+            },
+            queryName: `Images`,
+            separateNodeType: true,
+            separateMapType: true,
+          },
+          {
+            baseId: `app8D8IxuFkE09HNK`,
+            tableName: `Bios`,
+            mapping: {
+              text: 'text/markdown',
+            },
+            queryName: `Bios`,
+            separateNodeType: true,
+            separateMapType: true,
+            tableLinks: [`image`],
+          },
+          {
+            baseId: `app8D8IxuFkE09HNK`,
+            tableName: `Sections`,
+            mapping: {
+              text: 'text/markdown',
+            },
+            queryName: `Sections`,
+            separateNodeType: true,
+            separateMapType: true,
+            tableLinks: [`bio`, `testimonials`],
+          },
+        ],
       },
     },
     {
@@ -66,8 +139,25 @@ module.exports = {
         icon: `content/assets/gatsby-icon.png`,
       },
     },
-    `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-background-image',
+      options: {
+        // add your own characters to escape, replacing the default ':/'
+        specialChars: '/:',
+      },
+    },
+    // `gatsby-plugin-offline`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true,
+        allExtensions: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-netlify`,
+    },
   ],
 };

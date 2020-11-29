@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
-const NotFoundPage = ({ data, location }) => {
+type Props = {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string;
+      };
+    };
+  };
+  location: Location;
+};
+
+const NotFoundPage: FunctionComponent<Props> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
 
   return (
